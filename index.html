@@ -150,6 +150,7 @@ form{padding:28px;display:grid;gap:18px}
 .err{display:none;color:var(--bad);font-size:.78rem;margin-top:5px}
 .fld.bad .err{display:block}
 #done{display:none;color:var(--ok);font-weight:700}
+#form-error{display:none;color:var(--bad);font-size:.88rem}
 footer{border-top:1px solid var(--line);padding:46px 0 34px;position:relative;z-index:1;background:#0a0e14}
 .ft{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
 .ft nav{all:unset}
@@ -269,7 +270,8 @@ main{position:relative;z-index:1}
       <div class="fld"><label for="s">Subject</label><input id="s" required minlength="3"><div class="err">Add a subject (3+ characters).</div></div>
       <div class="fld"><label for="m">Message</label><textarea id="m" required minlength="10"></textarea><div class="err">Write at least 10 characters.</div></div>
       <button class="btn p" type="submit" style="justify-content:center">Send message</button>
-      <div id="done">Message sent. I'll reply within 24 hours.</div>
+      <div id="done" role="status" aria-live="polite">تم الإرسال بنجاح</div>
+      <div id="form-error" role="alert" aria-live="assertive"></div>
     </form>
   </div>
 </div></section>
@@ -372,16 +374,94 @@ tabs.forEach(b=>b.onclick=()=>{fl=b.dataset.f;tabs.forEach(t=>t.classList.toggle
 va.onclick=()=>{more=!more;paint();if(!more)document.getElementById('projects').scrollIntoView()};
 paint();
 
-// form validation
-const f=document.getElementById('f');
-const ok=el=>el.type==='email'?/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(el.value):el.value.trim().length>=(+el.getAttribute('minlength')||1);
-const mark=el=>{const w=el.parentElement;const v=ok(el);w.classList.toggle('ok',v);w.classList.toggle('bad',!v&&el.value!=='')};
-f.querySelectorAll('input,textarea').forEach(el=>el.addEventListener('input',()=>mark(el)));
-f.addEventListener('submit',e=>{
-  e.preventDefault();let all=true;
-  f.querySelectorAll('input,textarea').forEach(el=>{if(!ok(el)){all=false;el.parentElement.classList.add('bad')}else mark(el)});
-  if(all){document.getElementById('done').style.display='block';f.reset();f.querySelectorAll('.fld').forEach(x=>x.classList.remove('ok'))}
+// Stop native form navigation immediately; the module below handles Firestore.
+const contactForm=document.getElementById('f');
+contactForm.addEventListener('submit',e=>{
+  e.preventDefault();
+  if(!window.__portfolioFirestoreReady){
+    const status=document.getElementById('form-error');
+    status.textContent='تعذر تجهيز ربط Firestore. تحقق من اتصال الإنترنت وأعد تحميل الصفحة.';
+    status.style.display='block';
+  }
 });
+</script>
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js';
+import { addDoc, collection, getFirestore, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js';
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyBhTM_aZ7sgvZqL262M27Th03KHsgiOe5o',
+  authDomain: 'image-83185.firebaseapp.com',
+  projectId: 'image-83185',
+  messagingSenderId: '154323710014',
+  appId: '1:154323710014:web:0675c54d1d8064b1b5216f'
+};
+const collectionName = 'form portfolio form';
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const form = document.getElementById('f');
+const done = document.getElementById('done');
+const error = document.getElementById('form-error');
+const submitButton = form.querySelector('button[type="submit"]');
+const fields = [...form.querySelectorAll('input, textarea')];
+
+const isValid = (field) => field.type === 'email'
+  ? /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(field.value.trim())
+  : field.value.trim().length >= (Number(field.getAttribute('minlength')) || 1);
+
+const markField = (field) => {
+  const valid = isValid(field);
+  field.parentElement.classList.toggle('ok', valid);
+  field.parentElement.classList.toggle('bad', !valid && field.value !== '');
+};
+fields.forEach((field) => field.addEventListener('input', () => markField(field)));
+
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  done.style.display = 'none';
+  error.style.display = 'none';
+  error.textContent = '';
+
+  let valid = true;
+  fields.forEach((field) => {
+    const fieldIsValid = isValid(field);
+    field.parentElement.classList.toggle('ok', fieldIsValid);
+    field.parentElement.classList.toggle('bad', !fieldIsValid);
+    if (!fieldIsValid) valid = false;
+  });
+  if (!valid) return;
+
+  const originalButtonText = submitButton.textContent;
+  submitButton.disabled = true;
+  submitButton.textContent = 'جارٍ الإرسال…';
+  const submission = {
+    name: document.getElementById('n').value.trim(),
+    email: document.getElementById('e').value.trim(),
+    subject: document.getElementById('s').value.trim(),
+    message: document.getElementById('m').value.trim(),
+    submittedAt: serverTimestamp(),
+    source: 'portfolio-contact-form'
+  };
+
+  try {
+    await addDoc(collection(db, collectionName), submission);
+    form.reset();
+    form.querySelectorAll('.fld').forEach((field) => field.classList.remove('ok', 'bad'));
+    done.style.display = 'block';
+  } catch (firestoreError) {
+    console.error('Portfolio Firestore submission failed:', firestoreError?.code || 'unknown error');
+    if (firestoreError?.code === 'permission-denied') {
+      error.textContent = 'لم يتم الحفظ: قواعد Firestore لا تسمح بالإضافة إلى مجموعة "form portfolio form". أضف قاعدة الإنشاء المرفقة ثم أعد المحاولة.';
+    } else {
+      error.textContent = 'تعذر إرسال الرسالة الآن. تحقق من الاتصال بالإنترنت ثم حاول مرة أخرى.';
+    }
+    error.style.display = 'block';
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = originalButtonText;
+  }
+});
+window.__portfolioFirestoreReady = true;
 </script>
 </body>
 </html>
