@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mostafa Mohamed Jebriel — Senior Full Stack Mobile Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0D1117;--bg2:#0F172A;--blue:#0175C2;--deep:#02569B;--cyan:#54C5F8;--text:#E6EDF3;--mute:#8B98A9;--glass:rgba(255,255,255,.04);--line:#FFFFFF15;--ok:#3FB950;--bad:#F85149;
+--sans:'Plus Jakarta Sans',system-ui,-apple-system,Segoe UI,sans-serif;--mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:radial-gradient(900px 500px at 85% -5%,#0175C233,transparent),radial-gradient(700px 500px at -10% 40%,#54C5F81a,transparent),var(--bg);background-attachment:fixed;color:var(--text);font:400 16px/1.65 var(--sans);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{line-height:1.15;margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+section{padding:92px 0}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+.sub{color:var(--mute);max-width:60ch;margin:0 0 40px}
+.glass{background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:18px}
+.mono{font-family:var(--mono)}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+#glow{position:fixed;width:360px;height:360px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,#54C5F822,transparent 65%);transform:translate(-50%,-50%);z-index:0;left:-400px;top:-400px}
+nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;padding:12px 0;background:rgba(13,17,23,.65);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-family:var(--mono);font-weight:500;color:var(--cyan)}
+.links{display:flex;gap:26px}
+.links a{color:var(--mute);font-size:.93rem;transition:.2s}
+.links a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-weight:700;font-size:.95rem;border:1px solid var(--line);cursor:pointer;font-family:inherit;color:var(--text);background:var(--glass);transition:transform .2s,box-shadow .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px) scale(1.03);border-color:var(--cyan)}
+.btn.p{background:linear-gradient(135deg,var(--deep),var(--blue));border-color:transparent;box-shadow:0 0 0 #54C5F800}
+.btn.p:hover{box-shadow:0 0 28px #54C5F888,0 0 6px #54C5F8}
+.sm{padding:9px 18px}
+.btn.lg{padding:16px 34px;font-size:1.02rem}
+.btn.p{background:linear-gradient(135deg,#0175C2,#0a96e8)}
+.btn:not(.p){background:#0d1520aa}
+.btn.cv{text-transform:uppercase;letter-spacing:.03em;font-size:.85rem;padding:12px 22px;box-shadow:0 0 22px #0175C255}
+.open{display:inline-flex;align-items:center;gap:10px;padding:9px 20px;border-radius:99px;font-size:.9rem;font-weight:500;color:#34d399;border:1px solid #34d39955;background:#34d3990d;margin-bottom:22px}
+.open i{width:10px;height:10px;border-radius:50%;background:#34d399;box-shadow:0 0 10px #34d399}
+.seg{margin-left:auto;display:flex;background:#ffffff0a;border:1px solid var(--line);border-radius:10px;padding:3px;gap:2px}
+.seg button{padding:6px 12px;border:0;background:transparent;color:var(--mute);font:500 .78rem var(--mono);border-radius:7px;cursor:pointer;transition:.2s}
+.seg button.on{background:#0175C233;color:var(--cyan)}
+.fn{display:flex;justify-content:space-between;align-items:center;padding:10px 18px;color:var(--mute);font-size:.8rem;border-bottom:1px solid var(--line)}
+#cp{background:none;border:0;color:var(--mute);font:inherit;cursor:pointer}#cp:hover{color:var(--cyan)}
+#ui{display:grid;place-items:center;min-height:300px;background:radial-gradient(circle at 50% 40%,#0175C233,transparent 70%)}
+#ui[hidden]{display:none}
+.pv{width:150px;height:260px;border:4px solid #263447;border-radius:24px;background:linear-gradient(170deg,#0175C2,#0b1220 72%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:14px;box-shadow:0 12px 30px #0008}
+.pv .av{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#ffffff1f;border:1px solid #ffffff40;font:700 .85rem var(--mono)}
+.pv p{margin:0;font-weight:800;font-size:.92rem;line-height:1.25}.pv small{color:#cfe8fa;font-size:.7rem}
+.pv .gb{margin-top:6px;padding:6px 14px;border-radius:99px;background:#fff;color:#0b3b66;font-size:.72rem;font-weight:700}
+.stt{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:12px 18px;border-top:1px solid var(--line);font-size:.78rem;color:var(--mute)}
+.stt span:first-child b{color:#34d399;font-weight:500}.stt span:last-child b{color:var(--cyan);font-weight:500}
+#hero{padding-top:150px;position:relative;z-index:1}
+.brand{display:flex;align-items:center;gap:12px}
+.bi{width:46px;height:46px;border-radius:12px;border:2px solid var(--blue);background:#0175C222;display:grid;place-items:center;box-shadow:0 0 18px #0175C255}
+.bt b{display:block;font-size:1.3rem;letter-spacing:-.02em;line-height:1.1}
+.bt small{display:block;color:var(--cyan);font-size:.62rem;letter-spacing:.16em;margin-top:3px}
+.tags{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.tags .chip,.tags .open{margin:0}
+.burger{display:none;background:var(--glass);border:1px solid var(--line);color:var(--text);border-radius:10px;width:42px;height:42px;font-size:1.2rem;cursor:pointer}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center}
+.chip{display:inline-block;padding:6px 14px;border-radius:99px;font-size:.82rem;color:var(--cyan);border:1px solid #54C5F840;background:#54C5F812;margin-bottom:20px}
+h1{font-size:clamp(2.3rem,5.4vw,4rem);font-weight:800;letter-spacing:-.03em}
+h1 span{background:linear-gradient(90deg,var(--cyan),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--mute);font-size:1.08rem;margin:22px 0 28px;max-width:56ch}
+.cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:36px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stat{padding:16px}
+.stat b{display:block;font-size:1.9rem;color:var(--cyan);font-weight:800}
+.stat small{color:var(--mute);font-size:.8rem;line-height:1.3;display:block}
+.code{padding:0;overflow:hidden;box-shadow:0 20px 60px #0175C233;transform:perspective(900px) rotateY(-6deg) rotateX(3deg);transition:transform .4s}
+.code:hover{transform:perspective(900px) rotateY(0) rotateX(0)}
+.dots{display:flex;gap:7px;padding:13px 16px;border-bottom:1px solid var(--line);align-items:center}
+.dots i{width:11px;height:11px;border-radius:50%;background:#ff5f56}.dots i:nth-child(2){background:#ffbd2e}.dots i:nth-child(3){background:#27c93f}
+.dots span{margin-left:10px;color:var(--mute);font-size:.78rem}
+pre{margin:0;padding:18px;font:400 .82rem/1.7 var(--mono);overflow-x:auto;color:#c9d6e5;min-height:300px}
+.k{color:#ff7b72}.t{color:var(--cyan)}.s{color:#a5d6ff}.f{color:#d2a8ff}.c{color:#6e7f94}
+.cur{display:inline-block;width:7px;height:1em;background:var(--cyan);vertical-align:middle;animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.about{display:grid;grid-template-columns:1.3fr 1fr;gap:36px;align-items:start}
+.about p{color:#b6c2d1;margin:0 0 16px}
+.hl{padding:24px;display:grid;gap:16px}
+.hl div{display:flex;gap:14px;align-items:flex-start}
+.hl em{font-style:normal;width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:#0175C233;flex:none}
+.hl b{display:block}.hl span{color:var(--mute);font-size:.88rem}
+.sk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
+.sk{padding:24px;transition:transform .25s,border-color .25s,box-shadow .25s}
+.sk:hover{transform:translateY(-4px);border-color:#54C5F855;box-shadow:0 10px 40px #0175C233}
+.sk h3{font-size:1.05rem;margin-bottom:16px;color:var(--cyan)}
+.m{margin-bottom:12px}
+.m div{display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:5px}
+.m div span:last-child{color:var(--mute);font-family:var(--mono)}
+.bar{height:6px;border-radius:9px;background:#ffffff12;overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,var(--blue),var(--cyan));box-shadow:0 0 12px #54C5F8aa;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.badges{display:flex;flex-wrap:wrap;gap:8px}
+.badges span{font:500 .78rem var(--mono);padding:6px 11px;border-radius:8px;border:1px solid var(--line);background:#ffffff08;transition:.2s}
+.badges span:hover{border-color:var(--cyan);color:var(--cyan)}
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+.tab{padding:10px 20px;border-radius:99px;border:1px solid var(--line);background:var(--glass);color:var(--mute);font:600 .88rem var(--sans);cursor:pointer;transition:.2s}
+.tab:hover{color:var(--text)}
+.tab.on{background:var(--blue);color:#fff;border-color:transparent;box-shadow:0 0 22px #0175C288}
+.pj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.pj{overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s,border-color .25s}
+.pj:hover{transform:translateY(-6px);border-color:#54C5F855;box-shadow:0 16px 50px #0175C240}
+.pj.hide{display:none}
+.vall{text-align:center;margin-top:34px}
+.ico{width:46px;height:46px;border-radius:12px;margin:24px auto 8px;background:var(--a);display:grid;place-items:center;font-weight:800;font-size:1.3rem;position:relative;overflow:hidden}
+.ico img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.phone b{display:block;text-align:center;font-size:.58rem;margin-bottom:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.shot{height:230px;display:grid;place-items:center;background:linear-gradient(160deg,#0175C230,#0F172A)}
+.phone{width:112px;height:200px;border-radius:22px;border:4px solid #263447;background:#0b1220;padding:10px 8px;position:relative;overflow:hidden;box-shadow:0 12px 30px #0008;transition:transform .35s}
+.pj:hover .phone{transform:rotate(-4deg) scale(1.06)}
+.phone::before{content:"";position:absolute;top:5px;left:50%;width:34px;height:5px;border-radius:9px;background:#263447;transform:translateX(-50%)}
+.phone u{display:block;height:34px;border-radius:8px;margin:14px 0 7px;background:var(--a,#0175C2);opacity:.9}
+.phone s{display:block;height:9px;border-radius:5px;background:#ffffff1c;margin-bottom:6px}
+.phone s:nth-of-type(2){width:70%}
+.phone .row{display:flex;gap:6px}.phone .row s{flex:1;height:44px;border-radius:7px;margin:0}
+.pb{padding:22px;display:flex;flex-direction:column;gap:12px;flex:1}
+.pb h3{font-size:1.15rem}.pb p{margin:0;color:var(--mute);font-size:.92rem}
+.imp{color:var(--ok);font-size:.88rem;font-weight:700}
+.pl{display:flex;gap:16px;margin-top:auto;font-size:.85rem;color:var(--cyan);font-weight:700}
+.pl a:hover{text-decoration:underline}
+.tl{position:relative;padding-left:34px}
+.tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--cyan),var(--deep),transparent)}
+.job{position:relative;padding:24px;margin-bottom:20px}
+.job::before{content:"";position:absolute;left:-33px;top:30px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--cyan);box-shadow:0 0 14px var(--cyan)}
+.job .when{font:500 .8rem var(--mono);color:var(--cyan)}
+.job h3{margin:6px 0 2px;font-size:1.2rem}.job .co{color:var(--mute);margin-bottom:12px;font-size:.92rem}
+.job ul{margin:0;padding-left:18px;color:#b6c2d1}.job li{margin-bottom:6px}
+.ct{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.status{display:inline-flex;gap:10px;align-items:center;padding:10px 16px;border-radius:12px;background:#3FB95014;border:1px solid #3FB95040;font-size:.9rem;margin-bottom:22px}
+.status::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 #3FB950;animation:pu 2s infinite}
+@keyframes pu{70%{box-shadow:0 0 0 9px #3FB95000}}
+.info{display:grid;gap:12px}
+.info a{display:flex;gap:14px;align-items:center;padding:14px 18px;transition:.2s}
+.info a:hover{border-color:var(--cyan);transform:translateX(4px)}
+.info small{display:block;color:var(--mute);font-size:.76rem;line-height:1.2}
+form{padding:28px;display:grid;gap:18px}
+.fld{position:relative}
+.fld label{display:block;font-size:.84rem;color:var(--mute);margin-bottom:6px}
+.fld input,.fld textarea{width:100%;padding:13px 15px;border-radius:11px;border:1px solid var(--line);background:#ffffff08;color:var(--text);font:inherit;transition:.2s}
+.fld textarea{min-height:120px;resize:vertical}
+.fld input:focus,.fld textarea:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px #54C5F826}
+.fld.ok input,.fld.ok textarea{border-color:var(--ok)}
+.fld.bad input,.fld.bad textarea{border-color:var(--bad)}
+.err{display:none;color:var(--bad);font-size:.78rem;margin-top:5px}
+.fld.bad .err{display:block}
+#done{display:none;color:var(--ok);font-weight:700}
+footer{border-top:1px solid var(--line);padding:46px 0 34px;position:relative;z-index:1;background:#0a0e14}
+.ft{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.ft nav{all:unset}
+.fl{display:flex;gap:20px;flex-wrap:wrap;color:var(--mute);font-size:.9rem}
+.fl a:hover{color:var(--cyan)}
+.soc{display:flex;gap:10px}
+.soc a{width:42px;height:42px;display:grid;place-items:center;border-radius:11px;border:1px solid var(--line);font:700 .78rem var(--mono);color:var(--mute);transition:.2s}
+.soc svg{width:20px;height:20px;fill:currentColor}
+.soc svg[fill=none]{fill:none}
+.soc a:hover{color:var(--cyan);border-color:var(--cyan);box-shadow:0 0 18px #54C5F855;transform:translateY(-3px)}
+.copy{margin-top:30px;color:var(--mute);font-size:.85rem;text-align:center}
+main{position:relative;z-index:1}
+@media(max-width:860px){.links{gap:16px}.hero-grid,.about,.ct{grid-template-columns:1fr}.code{transform:none}section{padding:68px 0}}
+@media(max-width:720px){.burger{display:block}.links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:16px 22px;gap:14px;background:rgba(13,17,23,.96);border-bottom:1px solid var(--line)}.links.show{display:flex}nav .wrap{flex-wrap:nowrap}.btn.cv{padding:10px 14px;font-size:.75rem}.bt small{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div id="glow"></div>
+<nav><div class="wrap">
+  <a class="brand" href="#hero"><span class="bi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#54C5F8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></span><span class="bt"><b class="mono" style="color:var(--cyan)">&lt;MMJ<span style="color:var(--text)">/&gt;</span></b><small class="mono">LEAD MOBILE DEVELOPER</small></span></a>
+  <div class="links"><a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a></div>
+  <button class="burger" aria-label="Menu" type="button">☰</button>
+  <a class="btn p cv" href="icons/Mostafa-Jebriel-CV.pdf" download="Mostafa-Jebriel-CV.pdf"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>Download CV</a>
+</div></nav>
+
+<main>
+<section id="hero"><div class="wrap hero-grid">
+  <div>
+    <div class="tags"><span class="chip mono">6+ years · Egypt · Remote-ready</span><span class="open"><i></i>Open for Lead Flutter Roles &amp; Remote Consulting</span></div>
+    <h1>Senior Full Stack <span>Mobile Developer</span> · Flutter &amp; Laravel</h1>
+    <p class="lead">I'm Mostafa Mohamed Jebriel. I build production-grade mobile apps with Flutter and Laravel, manage state with GetX, and ship clean, scalable architecture with polished UI to Google Play and the App Store.</p>
+    <div class="cta"><a class="btn p lg" href="#projects">View Featured Apps <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn lg" href="#contact"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>Get In Touch</a></div>
+    <div class="stats">
+      <div class="glass stat"><b data-n="6" data-s="+">0</b><small>Years of experience</small></div>
+      <div class="glass stat"><b data-n="13" data-s="+">0</b><small>Apps published on Google Play &amp; App Store</small></div>
+      <div class="glass stat"><b data-n="2" data-s=" stacks">0</b><small>Flutter + Laravel, end to end</small></div>
+    </div>
+  </div>
+  <div class="glass code">
+    <div class="dots"><i></i><i></i><i></i>
+      <div class="seg"><button class="on" data-v="code" type="button">&lt;/&gt; Dart Logic</button><button data-v="ui" type="button">📱 UI Preview</button></div></div>
+    <div class="fn mono"><span>welcome_controller.dart</span><button id="cp" type="button">Copy</button></div>
+    <pre id="code" aria-label="Dart code sample"></pre>
+    <div id="ui" hidden><div class="pv"><b class="av">MMJ</b><p>Welcome to MMJ Portfolio</p><small>Flutter · GetX · Laravel</small><span class="gb">Get started</span></div></div>
+    <div class="stt mono"><span>Status: <b>Ready</b></span><span>Target: <b>iOS &amp; Android (120Hz)</b></span></div>
+  </div>
+</div></section>
+
+<section id="about"><div class="wrap">
+  <h2>About me</h2><p class="sub">Architecture first, pixels close behind.</p>
+  <div class="about">
+    <div>
+      <p>I'm a Senior Full Stack Mobile Developer with 6 years of experience designing, building and shipping production-grade apps with Flutter and Laravel. I have published 10+ apps on Google Play and the App Store across on-demand services, enterprise operations, e-commerce, ticketing and business automation.</p>
+      <p>I'm strong in scalable app architecture, clean and intuitive UI, and integrating complex backend systems. State management in my apps runs on GetX.</p>
+      <p>I work well in fast-paced environments, collaborate closely with product, design, backend and QA teams, and deliver reliable solutions within tight deadlines.</p>
+    </div>
+    <div class="glass hl">
+      <div><em>✨</em><p style="margin:0"><b>Clean code</b><span>Readable, layered, documented.</span></p></div>
+      <div><em>🧪</em><p style="margin:0"><b>Test-driven development</b><span>Unit, widget and integration tests.</span></p></div>
+      <div><em>🤝</em><p style="margin:0"><b>Mentorship</b><span>Code reviews and pairing that level up teams.</span></p></div>
+      <div><em>🚀</em><p style="margin:0"><b>Store deployment &amp; CI/CD</b><span>Automated builds, signing and releases.</span></p></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="experience"><div class="wrap">
+  <h2>Experience</h2><p class="sub">My career path, from Flutter developer to lead.</p>
+  <div class="tl">
+    <div class="glass job"><span class="when">Dec 2023 – Present</span><h3>Lead Mobile Developer</h3><div class="co">Pingsys · Cairo, Egypt</div>
+      <ul><li>Monitoring the application and solving problems faced by users.</li><li>Creating services effectively and improving monitoring and modification of data.</li><li>Collaborating with cross-functional teams to define and design new features.</li></ul></div>
+    <div class="glass job"><span class="when">Feb 2023 – Oct 2023</span><h3>Senior Flutter Developer</h3><div class="co">Teleoceans · Cairo, Egypt</div>
+      <ul><li>Monitoring the application and solving problems faced by users.</li><li>Creating services effectively and improving monitoring and modification of data.</li><li>Collaborating with cross-functional teams to define and design new features.</li></ul></div>
+    <div class="glass job"><span class="when">Sep 2021 – Dec 2022</span><h3>Flutter Developer</h3><div class="co">We bring Company · Cairo, Egypt</div>
+      <ul><li>Monitoring the application and solving problems faced by users.</li><li>Creating services effectively and improving monitoring and modification of data.</li><li>Collaborating with cross-functional teams to define and design new features.</li></ul></div>
+  </div></section>
+
+<section id="skills"><div class="wrap">
+  <h2>Skills &amp; expertise</h2><p class="sub">The stack I reach for, and how deep I go.</p>
+  <div class="sk-grid">
+    <div class="glass sk"><h3>State management &amp; architecture</h3><div class="m"><div><span>GetX</span><span>100%</span></div><div class="bar"><i data-w="100"></i></div></div><div class="m"><div><span>Clean Architecture</span><span>90%</span></div><div class="bar"><i data-w="90"></i></div></div><div class="m"><div><span>Cubit / BLoC</span><span>75%</span></div><div class="bar"><i data-w="75"></i></div></div><div class="badges"><span>GetX routing</span><span>Dependency injection</span></div></div>
+    <div class="glass sk"><h3>Core mobile &amp; Flutter</h3><div class="m"><div><span>Flutter SDK</span><span>95%</span></div><div class="bar"><i data-w="95"></i></div></div><div class="m"><div><span>Custom UI &amp; animations</span><span>88%</span></div><div class="bar"><i data-w="88"></i></div></div><div class="m"><div><span>REST API integration</span><span>92%</span></div><div class="bar"><i data-w="92"></i></div></div><div class="badges"><span>Figma to Flutter</span><span>Performance tuning</span></div></div>
+    <div class="glass sk"><h3>Languages</h3><div class="m"><div><span>Dart</span><span>95%</span></div><div class="bar"><i data-w="95"></i></div></div><div class="m"><div><span>PHP</span><span>85%</span></div><div class="bar"><i data-w="85"></i></div></div><div class="m"><div><span>Java</span><span>70%</span></div><div class="bar"><i data-w="70"></i></div></div><div class="m"><div><span>Kotlin</span><span>65%</span></div><div class="bar"><i data-w="65"></i></div></div><div class="m"><div><span>C++</span><span>60%</span></div><div class="bar"><i data-w="60"></i></div></div></div>
+    <div class="glass sk"><h3>Frameworks &amp; tools</h3><div class="m"><div><span>Flutter</span><span>95%</span></div><div class="bar"><i data-w="95"></i></div></div><div class="m"><div><span>Laravel</span><span>85%</span></div><div class="bar"><i data-w="85"></i></div></div><div class="badges"><span>Android Studio</span></div></div>
+    <div class="glass sk"><h3>Databases</h3><div class="m"><div><span>MySQL</span><span>85%</span></div><div class="bar"><i data-w="85"></i></div></div><div class="m"><div><span>SQLite</span><span>85%</span></div><div class="bar"><i data-w="85"></i></div></div><div class="m"><div><span>SQL Server</span><span>75%</span></div><div class="bar"><i data-w="75"></i></div></div></div>
+    <div class="glass sk"><h3>Dev tools &amp; design</h3><div class="badges"><span>Git</span><span>VS Code</span><span>Android Studio</span><span>Firebase</span><span>Figma</span><span>Adobe XD</span></div></div>
+    <div class="glass sk"><h3>Personal skills</h3><div class="badges"><span>Problem solving</span><span>Analytical thinking</span><span>Communication</span><span>Teamwork</span><span>Works independently</span><span>Self-motivated</span><span>Highly organized</span><span>Works under pressure</span></div></div>
+  </div></section>
+
+<section id="projects"><div class="wrap">
+  <h2>Projects</h2><p class="sub">13 apps live on Google Play and the App Store.</p>
+  <div class="tabs" role="tablist">
+    <button class="tab on" data-f="all">All</button><button class="tab" data-f="svc">On-Demand Services</button><button class="tab" data-f="ent">Enterprise / Utility</button><button class="tab" data-f="health">Healthcare</button><button class="tab" data-f="life">E-Commerce / Lifestyle</button>
+  </div>
+  <div class="pj-grid" id="pg"></div>
+  <div class="vall"><button class="btn" id="va" type="button"></button></div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <h2>Contact</h2><p class="sub">Have a product to build or a team to lead? Let's talk.</p>
+  <div class="ct">
+    <div>
+      <div class="status">Open for Senior / Lead roles &amp; high-impact consulting</div>
+      <div class="info">
+        <a class="glass" href="mailto:mostafajebriel@gmail.com"><span>✉️</span><span><small>Email</small>mostafajebriel@gmail.com</span></a>
+        <a class="glass" href="tel:+201022851140"><span>📞</span><span><small>Phone</small>01022851140</span></a>
+        <a class="glass" href="https://wa.me/201022851140" target="_blank" rel="noopener"><span>💬</span><span><small>WhatsApp</small>01022851140</span></a>
+        <a class="glass" href="#"><span>📍</span><span><small>Location</small>Egypt · Remote-ready</span></a>
+        <a class="glass" href="https://github.com/Mostafa-jebriel" target="_blank" rel="noopener"><span>🐙</span><span><small>GitHub</small>github.com/Mostafa-jebriel</span></a>
+        <a class="glass" href="https://linkedin.com/in/mostafa-jebriel/" target="_blank" rel="noopener"><span>🔗</span><span><small>LinkedIn</small>linkedin.com/in/mostafa-jebriel</span></a>
+        <a class="glass" href="https://behance.net/mostafa_jebriel" target="_blank" rel="noopener"><span>🎨</span><span><small>Behance</small>behance.net/mostafa_jebriel</span></a>
+      </div>
+    </div>
+    <form class="glass" id="f" novalidate>
+      <div class="fld"><label for="n">Name</label><input id="n" required minlength="2" autocomplete="name"><div class="err">Enter your name (2+ characters).</div></div>
+      <div class="fld"><label for="e">Email</label><input id="e" type="email" required autocomplete="email"><div class="err">Enter a valid email like name@company.com.</div></div>
+      <div class="fld"><label for="s">Subject</label><input id="s" required minlength="3"><div class="err">Add a subject (3+ characters).</div></div>
+      <div class="fld"><label for="m">Message</label><textarea id="m" required minlength="10"></textarea><div class="err">Write at least 10 characters.</div></div>
+      <button class="btn p" type="submit" style="justify-content:center">Send message</button>
+      <div id="done">Message sent. I'll reply within 24 hours.</div>
+    </form>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="ft">
+    <div class="fl"><a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a></div>
+    <div class="soc"><a href="https://github.com/Mostafa-jebriel" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a><a href="https://linkedin.com/in/mostafa-jebriel/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="https://behance.net/mostafa_jebriel" target="_blank" rel="noopener" aria-label="Behance"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-weight="800" font-size="15" fill="currentColor">Bē</text></svg></a><a href="mailto:mostafajebriel@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a></div>
+  </div>
+  <p class="copy">© 2026 Mostafa Mohamed Jebriel. Built with ❤️ for Flutter lovers.</p>
+</div></footer>
+
+<script>
+const lk=document.querySelector('.links');
+document.querySelector('.burger').onclick=()=>lk.classList.toggle('show');
+lk.querySelectorAll('a').forEach(a=>a.onclick=()=>lk.classList.remove('show'));
+// cursor glow
+const g=document.getElementById('glow');
+addEventListener('pointermove',e=>{g.style.left=e.clientX+'px';g.style.top=e.clientY+'px'});
+
+// typed code card
+const src=`<span class="c">// Welcome to the GetX way</span>
+<span class="k">class</span> <span class="t">WelcomeController</span> <span class="k">extends</span> <span class="t">GetxController</span> {
+  <span class="k">final</span> message = <span class="s">'Welcome to MMJ Portfolio'</span>.<span class="f">obs</span>;
+
+  <span class="k">void</span> <span class="f">greet</span>() =&gt; <span class="f">print</span>(message.value);
+
+  <span class="f">@override</span>
+  <span class="k">void</span> <span class="f">onReady</span>() {
+    <span class="k">super</span>.<span class="f">onReady</span>();
+    <span class="f">greet</span>();
+  }
+}
+
+<span class="k">class</span> <span class="t">WelcomeView</span> <span class="k">extends</span> <span class="t">GetView</span>&lt;<span class="t">WelcomeController</span>&gt; {
+  <span class="k">const</span> <span class="t">WelcomeView</span>({<span class="k">super</span>.key});
+
+  <span class="f">@override</span>
+  <span class="t">Widget</span> <span class="f">build</span>(<span class="t">BuildContext</span> context) {
+    <span class="k">return</span> <span class="t">Obx</span>(() =&gt; <span class="t">Text</span>(controller.message.value));
+  }
+}`;
+const pre=document.getElementById('code');
+const ui=document.getElementById('ui');
+document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.seg button').forEach(x=>x.classList.toggle('on',x===b));
+  pre.hidden=b.dataset.v!=='code';ui.hidden=b.dataset.v!=='ui';
+  document.querySelector('.fn span').textContent=b.dataset.v==='code'?'welcome_controller.dart':'welcome_view.dart';
+});
+document.getElementById('cp').onclick=function(){
+  const d=document.createElement('div');d.innerHTML=src;const t=d.textContent;
+  const done=()=>{this.textContent='Copied';setTimeout(()=>this.textContent='Copy',1500)};
+  try{navigator.clipboard.writeText(t).then(done,fb)}catch(e){fb()}
+  function fb(){const x=document.createElement('textarea');x.value=t;document.body.appendChild(x);x.select();try{document.execCommand('copy')}catch(e){}x.remove();done()}
+};
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+if(reduce){pre.innerHTML=src}else{
+  // type by visible character, keeping tags intact
+  let i=0,out='',inTag=false;
+  (function tick(){
+    for(let k=0;k<3&&i<src.length;k++){const ch=src[i++];out+=ch;if(ch==='<')inTag=true;if(ch==='>')inTag=false;if(inTag){while(inTag&&i<src.length){const c=src[i++];out+=c;if(c==='>')inTag=false}}}
+    pre.innerHTML=out+'<span class="cur"></span>';
+    if(i<src.length)setTimeout(tick,16);else pre.innerHTML=src;
+  })();
+}
+
+// counters + meters on view
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;io.unobserve(e.target);
+  const t=e.target;
+  if(t.dataset.n){const end=+t.dataset.n,s=t.dataset.s||'',d=end%1?1:0;let st=null;
+    const step=ts=>{st=st||ts;const p=Math.min((ts-st)/1400,1);t.textContent=(end*p).toFixed(d)+s;if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step)}
+  if(t.dataset.w)t.style.width=t.dataset.w+'%';
+}),{threshold:.4});
+document.querySelectorAll('[data-n],[data-w]').forEach(el=>io.observe(el));
+
+// projects
+const APPS=[
+["Ticketore","life","Egypt's ticketing platform for sports matches, concerts, festivals and cultural events.","#e11d48","com.ticketore.eg","https://apps.apple.com/eg/app/ticketore/id6478551002?l=ar"],
+["Save Plus","life","Lifestyle and rewards app: discounts on restaurants, shopping and travel, map discovery, QR redemption and points.","#f59e0b","com.teleoceans.saveplus","https://apps.apple.com/eg/app/save-plus/id6762178225"],
+["Cura24h","svc","Home services on demand, from cleaning and maintenance to repairs and transport, with verified providers.","#06b6d4","com.cura.cura24h","https://apps.apple.com/eg/app/cura24h/id6759921818?l=ar"],
+["Cura24h Seller","svc","Companion app for service providers to manage bookings, customers, services and availability.","#0ea5e9","com.cara.cura24h_seller","https://apps.apple.com/eg/app/cura24h-seller/id6759921987?l=ar"],
+["Business Connect","ent","Brings all business operations into one place to automate tasks and speed up workflows.","#6366f1","com.pingosys.mmj.pingosys","https://apps.apple.com/us/app/pingosys-one/id6477573119"],
+["Operations & Follow-up Platform","ent","Operations and maintenance platform that automates work orders and asset inventory.","#0175C2","com.pingsys.mmj.pavepixel","https://apps.apple.com/ae/app/%D9%85%D9%86%D8%B5%D8%A9-%D8%A7%D9%84%D8%AA%D8%B4%D8%BA%D9%8A%D9%84-%D9%88%D8%A7%D9%84%D9%85%D8%AA%D8%A7%D8%A8%D8%B9%D8%A9/id6502632117"],
+["Tajeer Rent a Car","svc","Rent luxury and economy cars across Dubai and the UAE in a few simple, secure steps.","#8b5cf6","com.mmj.tajeercarrent","https://apps.apple.com/us/app/tajeer-rent-a-car-in-dubai/id1458290275"],
+["Elnaggar Clinic","health","Appointment booking for Dr. Mohamed Magdy Elnaggar's specialized clinics.","#10b981","com.mmj.einaggarclinic","https://apps.apple.com/eg/app/hemocure-clinic/id6754320164?l=ar"],
+["Urban Landscape Platform","ent","Strategic platform for urban landscape improvement: collects, processes and analyzes field data in one place.","#14b8a6","com.mmj.pingsys.urban_scene","https://apps.apple.com/ae/app/%D9%85%D9%86%D8%B5%D8%A9-%D8%AA%D8%AD%D8%B3%D9%8A%D9%86-%D8%A7%D9%84%D9%85%D8%B4%D9%87%D8%AF-%D8%A7%D9%84%D8%AD%D8%B6%D8%B1%D9%8A/id6733241417"],
+["ISCO","ent","Safety and fire-protection supplier app for Saudi Arabia: fire-fighting, alarm and security systems.","#ef4444","com.mmj.iscoksa","https://apps.apple.com/eg/app/iscoksa/id6775752920"],
+["My Ploto","svc","Pet care services provider in Dubai, making pet services easy to find and trust across the UAE.","#ec4899","net.myploto.myploto",""],
+["Alarm Medicine","health","Reminds users when to take their medicine. Reminders only, no medical advice.","#22c55e","com.mmj.alarm_medicine",""],
+["YalaZeen","svc","Book reliable home maintenance, from plumbing and electrical to AC servicing, with certified professionals.","#f97316","com.mmj.pingsys.yalazeen","https://apps.apple.com/eg/app/yalazeen/id6758261759?l=ar"]];
+const pg=document.getElementById('pg');
+pg.innerHTML=APPS.map(([n,c,d,col,g,a])=>`<article class="glass pj" data-c="${c}"><div class="shot"><div class="phone" style="--a:${col}"><div class="ico">${n[0]}<img src="icons/${n.toLowerCase().replace(/[^a-z0-9]+/g,'-')}.png" alt="" onerror="this.remove()"></div><b>${n}</b><s></s><s></s></div></div><div class="pb"><h3>${n}</h3><p>${d}</p><div class="imp">${a?'Live on Google Play &amp; App Store':'Live on Google Play'}</div><div class="badges"><span>Flutter</span><span>Android</span>${a?'<span>iOS</span>':''}</div><div class="pl"><a href="https://play.google.com/store/apps/details?id=${g}" target="_blank" rel="noopener">Google Play</a>${a?`<a href="${a}" target="_blank" rel="noopener">App Store</a>`:''}</div></div></article>`).join('');
+const tabs=document.querySelectorAll('.tab'),cards=[...document.querySelectorAll('.pj')],va=document.getElementById('va');
+let fl='all',more=false;
+function paint(){let n=0;cards.forEach(c=>{const m=fl==='all'||c.dataset.c===fl;let s=m;if(m&&fl==='all'&&!more)s=n<8;if(m)n++;c.classList.toggle('hide',!s)});
+  va.style.display=fl==='all'?'':'none';va.textContent=more?'Show less':'View all '+cards.length+' apps'}
+tabs.forEach(b=>b.onclick=()=>{fl=b.dataset.f;tabs.forEach(t=>t.classList.toggle('on',t===b));paint()});
+va.onclick=()=>{more=!more;paint();if(!more)document.getElementById('projects').scrollIntoView()};
+paint();
+
+// form validation
+const f=document.getElementById('f');
+const ok=el=>el.type==='email'?/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(el.value):el.value.trim().length>=(+el.getAttribute('minlength')||1);
+const mark=el=>{const w=el.parentElement;const v=ok(el);w.classList.toggle('ok',v);w.classList.toggle('bad',!v&&el.value!=='')};
+f.querySelectorAll('input,textarea').forEach(el=>el.addEventListener('input',()=>mark(el)));
+f.addEventListener('submit',e=>{
+  e.preventDefault();let all=true;
+  f.querySelectorAll('input,textarea').forEach(el=>{if(!ok(el)){all=false;el.parentElement.classList.add('bad')}else mark(el)});
+  if(all){document.getElementById('done').style.display='block';f.reset();f.querySelectorAll('.fld').forEach(x=>x.classList.remove('ok'))}
+});
+</script>
+</body>
+</html>
